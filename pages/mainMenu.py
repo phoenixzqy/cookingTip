@@ -2,7 +2,7 @@ import pages.page
 from pages.sourceMenu import SourceMenu
 # from pages.randomMenu import RandomMenu
 from pages.recipe import Recipe
-
+import sys
 
 class MainMenu(pages.page.Page):
     __options = [
@@ -26,4 +26,4 @@ class MainMenu(pages.page.Page):
         elif [1, 0] in selection:
             Recipe(self.stdscr).render()
         else:
-            exit()
+            sys.exit()

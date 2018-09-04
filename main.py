@@ -1,5 +1,6 @@
 import curses
 from pages.mainMenu import MainMenu
+import sys
 
 # start curses
 stdscr = curses.initscr()
@@ -17,7 +18,7 @@ def main(stdscr):
         page.render()
     except KeyboardInterrupt:
         # When user press ctrl + c. then just exit the app
-        exit()
+        sys.exit()
 
 curses.wrapper(main)
 

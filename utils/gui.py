@@ -9,6 +9,7 @@ class GUI:
 
     # add string to given position coordinates[x,y]
     def addStr(self, myStr, coordinates=[None, None], attr=None):
+        
         if coordinates[1] != None and coordinates[0] != None:
             if attr != None:
                 self.stdscr.addstr(coordinates[1], coordinates[0], myStr, attr)
