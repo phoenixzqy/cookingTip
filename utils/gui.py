@@ -20,7 +20,7 @@ class GUI:
             else:
                 self.stdscr.addstr(myStr)
 
-    # a wrapper of ncurses getkey function
+    # a wrapper of functions
     def getKey(self):
         return self.stdscr.getkey()
 

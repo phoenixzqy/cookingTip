@@ -1,6 +1,6 @@
 import pages.page
 import config
-from utils.sqlhelper import SqlHelper
+from utils.jsonHelper import JsonHelper
 from utils.helpers import *
 
 # from pages.mainMenu import MainMenu
@@ -14,18 +14,16 @@ class Recipe(pages.page.Page):
         input = self.gui.rawInput([4, 2])
         self.gui.hideCursor()
 
-        sql = SqlHelper()
-        result = sql.query(("SELECT name,source,url,score FROM {} "
-                                "WHERE name LIKE '%%%s%%'"
-                                "ORDER BY score DESC" % input).format(config.item_list_table))
+        jh = JsonHelper()
+        result = jh.searchByName(input)
 
         self.gui.clearScreen()
         editedResult = []
         for i in result:
-            editedResult.append("菜名： " + i[0])
-            editedResult.append("评分： " + str(i[3]))
-            editedResult.append("食材： " + i[1])
-            editedResult.append("链接： " + config.base_url + i[2])
+            editedResult.append("菜名： " + i["name"])
+            editedResult.append("评分： " + str(i["score"]))
+            editedResult.append("食材： " + i["source"])
+            editedResult.append("链接： " + config.base_url + i["url"])
             editedResult.append(" ")
         self.gui.scrollableTextArea(
             "查询结果：",
