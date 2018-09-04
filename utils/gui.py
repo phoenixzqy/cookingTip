@@ -42,7 +42,6 @@ class GUI:
             coordinates=[0, 0],
             label=": ",
             single=False,
-            selections=[],
             enableKeyMonitor=True):
         _Y = 0
         _X = 1
@@ -50,6 +49,7 @@ class GUI:
         _TITLE = 0
         _SUBMENU = 1
         keyInput = None
+        selections = []
         while not (keyInput == "\n" and len(selections) > 0):
             # options list
             for i, sub in enumerate(options):

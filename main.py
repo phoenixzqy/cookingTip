@@ -12,9 +12,12 @@ stdscr.keypad(True)
 def main(stdscr):
     # Clear screen
     stdscr.clear()
-    page = MainMenu(stdscr)
-    page.render()
-
+    try:
+        page = MainMenu(stdscr)
+        page.render()
+    except KeyboardInterrupt:
+        # When user press ctrl + c. then just exit the app
+        exit()
 
 curses.wrapper(main)
 
