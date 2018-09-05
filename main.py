@@ -1,6 +1,12 @@
+#-*- coding: utf-8 -*-
+
+import settings
+settings.init()
+import routers
 import curses
-from pages.mainMenu import MainMenu
 import sys
+
+from pages.mainMenu import MainMenu
 
 # start curses
 stdscr = curses.initscr()
@@ -14,12 +20,12 @@ def main(stdscr):
     # Clear screen
     stdscr.clear()
     try:
-        page = MainMenu(stdscr)
-        page.render()
+        routers.getPage("main_menu", stdscr).render()
     except KeyboardInterrupt:
         # When user press ctrl + c. then just exit the app
         sys.exit()
 
+# init app with curses exception handler
 curses.wrapper(main)
 
 # end curses

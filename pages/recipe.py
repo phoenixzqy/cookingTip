@@ -1,10 +1,11 @@
+#-*- coding: utf-8 -*-
+import settings
+import routers
 import pages.page
-import config
-from utils.jsonHelper import JsonHelper
+from utils.dbHelper import DbHelper
 from utils.helpers import *
 
-# from pages.mainMenu import MainMenu
-import pages.mainMenu
+
 
 class Recipe(pages.page.Page):
     def render(self):
@@ -14,7 +15,7 @@ class Recipe(pages.page.Page):
         input = self.gui.rawInput([4, 2])
         self.gui.hideCursor()
 
-        jh = JsonHelper()
+        jh = DbHelper()
         result = jh.searchByName(input)
 
         self.gui.clearScreen()
@@ -23,14 +24,15 @@ class Recipe(pages.page.Page):
             editedResult.append("菜名： " + i["name"])
             editedResult.append("评分： " + str(i["score"]))
             editedResult.append("食材： " + i["source"])
-            editedResult.append("链接： " + config.base_url + i["url"])
+            editedResult.append(
+                "链接： " + settings.config['base_url'] + i["url"])
             editedResult.append(" ")
         self.gui.scrollableTextArea(
             "查询结果：",
-            editedResult, 
-            3, 
-            self.stdscr.getmaxyx()[0] - 3, 
+            editedResult,
+            3,
+            self.stdscr.getmaxyx()[0] - 3,
             5
-            )
+        )
         # back to main menu
-        pages.mainMenu.MainMenu(self.stdscr).render()
+        routers.getPage("main_menu", self.stdscr)

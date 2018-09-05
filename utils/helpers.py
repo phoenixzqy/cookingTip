@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 import syslog
 
 def fixedStrLen(myStr,n, align="left"):

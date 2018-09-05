@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 from utils.gui import GUI
 class Page:
 

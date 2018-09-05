@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 from utils.helpers import *
 import curses
 import copy
