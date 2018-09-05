@@ -5,4 +5,4 @@ entry=main.py
 # build app
 pyinstaller --clean -F -n $appname $entry
 # copy static files
-cp static ./dist/static
+cp -R static ./dist/static
