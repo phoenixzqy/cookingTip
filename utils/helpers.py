@@ -15,4 +15,4 @@ def fixedStrLen(myStr,n, align="left"):
     return result
 
 def log(msg):
-    syslog.syslog("[COOK]:" + msg)
+    syslog.syslog("[COOKING_TIP]: " + msg)

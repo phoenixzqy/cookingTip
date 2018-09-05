@@ -13,12 +13,13 @@ class SourceMenu(pages.page.Page):
         self.gui.clearScreen()
         self.gui.addStr("请问客官您都有什么食材？", [0, 0])
         selection = self.gui.multiSelection(self.__options, [4, 3], ": ")
-
+        menuLen = len(settings.config['options']['source_menu'])
         input = None
-        if [9, 0] in selection:
+        if [menuLen - 1, 0] in selection:
             self.gui.showCursor()
-            self.gui.addStr("请输入自定义食材（不同食材之间使用[空格]区分，按[回车]键结束编辑。）: ", [0, 14])
-            input = self.gui.rawInput([4, 15])
+            self.gui.addStr(
+                "请输入自定义食材（不同食材之间使用[空格]区分，按[回车]键结束编辑。）: ", [0, menuLen + 4])
+            input = self.gui.rawInput([4, menuLen + 5])
             self.gui.hideCursor()
 
         sources = []
@@ -39,7 +40,7 @@ class SourceMenu(pages.page.Page):
                 "链接： " + settings.config['base_url'] + i["url"])
             editedResult.append(" ")
         self.gui.scrollableTextArea(
-            "查询结果：",
+            "查询到" + str(len(editedResult)) + "个结果：",
             editedResult,
             3,
             self.stdscr.getmaxyx()[0] - 3,

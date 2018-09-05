@@ -28,7 +28,7 @@ class Recipe(pages.page.Page):
                 "链接： " + settings.config['base_url'] + i["url"])
             editedResult.append(" ")
         self.gui.scrollableTextArea(
-            "查询结果：",
+            "查询到" + str(len(editedResult)) + "个结果：",
             editedResult,
             3,
             self.stdscr.getmaxyx()[0] - 3,
